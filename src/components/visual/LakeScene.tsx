@@ -7,7 +7,7 @@ export function BassBoat({ className = "" }: { className?: string }) {
   const water = `${uid}-water`;
   return (
     <svg
-      viewBox="0 0 640 280"
+      viewBox="40 96 560 128"
       className={className}
       width="100%"
       height="100%"

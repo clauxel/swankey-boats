@@ -38,7 +38,7 @@ export default function ProductPage() {
         <MediaSlot
           label="HQ E498 hero still"
           caption="White-background or waterside 45° view. Keep length/beam proportions consistent with the working model."
-          ratio="hero"
+          ratio="wide"
         >
           <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-10">
             <BassBoat className="max-h-full w-full" />
