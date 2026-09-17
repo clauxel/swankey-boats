@@ -12,7 +12,7 @@ export const heroCopy = {
     "Sample and pilot orders",
   ] as const,
   sceneNote:
-    "Media slot — Hero render: European inland lake at dawn. HQ E498 moving slowly along a grass edge, then holding station. Deep graphite hull, teal brand line, wide casting decks, low console, hidden jet intake.",
+    "HQ E498 on an inland lake at golden hour. Deep graphite hull, cyan brand line, wide casting decks, low console, hidden jet intake.",
 };
 
 export const specs = [
@@ -440,7 +440,7 @@ export const pageMeta = {
   gallery: {
     title: "Gallery and Media Kit",
     description:
-      "Placeholder media grid for HQ E498 renders, details, technical drawings and video. Request the HUANQI media kit.",
+      "HQ E498 photography, craftsmanship details, engineering cutaway and technical diagrams. Request the HUANQI media kit.",
   },
   dealers: {
     title: "Become a HUANQI Dealer",

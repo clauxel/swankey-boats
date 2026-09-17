@@ -28,10 +28,10 @@ npm run lint
 
 | Route | Page | Primary CTA |
 | --- | --- | --- |
-| `/` | Home — 100svh hero, differentiation, product snapshot, dealer band, gallery teaser | Become a Dealer |
+| `/` | Home — photographic hero, craftsmanship grid, engineering cutaway, dealer band, gallery | Become a Dealer |
 | `/product` | HQ E498 specs, standard config, options, deck layout, shallow/weed scenarios | Request Product Information |
 | `/technology` | Electric jet, protected intake, GNSS / heading / current-hold, maintenance path | Talk to Engineering |
-| `/gallery` | Labelled media slots for renders, details, drawings and video | Download Media Kit |
+| `/gallery` | Lifestyle, detail and cutaway photography plus technical diagrams | Download Media Kit |
 | `/dealers` | Non-exclusive Europe programme (France / Germany first) + application form | Apply to Become a Dealer |
 | `/about` | Company credibility + contact | Contact HUANQI |
 | `/contact` | Inquiry form (`?topic=product\|dealer\|engineering\|media\|oem\|other`) | Contact HUANQI |
@@ -45,21 +45,28 @@ Brand lines used on the site:
 
 Structured content lives in `src/lib/content.ts` and `src/lib/site.ts`. Change copy there before touching layout.
 
-## Placeholder media
+## Visual system
 
-There are no sample-boat photographs in this repository. Each frame is a labelled **media slot** (CSS/SVG lake and boat diagrams, not stock photos).
+Dark graphite surfaces (`#05080c`), white headings, cyan/teal accent (`#00C2D4`–`#22D3EE`) for CTAs, underlines and hull pinstripes. Outfit + Source Sans 3. Photography leads: full-bleed lifestyle hero, 2×2 craftsmanship grid, white-studio engineering cutaway. SVG diagrams remain as supplements on Technology and Gallery.
 
-To replace a slot:
+## Media assets
 
-1. Export renders/photos/video using the brief’s shot list (dawn lake hero, 45° / side / plan, bow, console, jet intake, livewell, cutaway, station-keeping, service path, underway clips).
-2. Place files under `public/media/` using the slot id as the filename, for example:
-   - `public/media/hero-dawn.jpg`
-   - `public/media/three-quarter.jpg`
-   - `public/media/video-run.mp4`
-3. Swap the SVG child inside the matching `MediaSlot` on Home, Product, Technology or Gallery for a Next.js `<Image>` or `<video>`. Keep the “Media slot” label until the asset is final. Next.js image optimisation is disabled (`images.unoptimized`) because this site is a static export.
-4. When a packaged media kit exists, point the Gallery CTA at `/media/huanqi-hq-e498-media-kit.zip` instead of the mailto request.
+Public files live in `public/media/` and are catalogued in `src/lib/media.ts`.
 
-Do not drop generic fishing-boat stock into these slots. The brief asks for model-accurate graphite hull, teal accent, wide decks, low console and hidden jet intake.
+| File | Role |
+| --- | --- |
+| `hero-lake.jpg` | Primary Home hero (full-bleed lake lifestyle) and inner-page banners |
+| `detail-collage.jpg` | Exploded engineering still (deck / batteries / jet); same image as `cutaway-exploded.jpg` |
+| `cutaway-exploded.jpg` | Technology / engineering exploded view |
+| `feature-bow.jpg` | Bow and trolling area (crop of the lake hero) |
+| `feature-console.jpg` | Low console (crop of the lake hero) |
+| `feature-storage.jpg` | In-deck storage hatch |
+| `feature-stern.jpg` | Stern / transom (crop of the lake hero) |
+| `feature-stripe.jpg` | Graphite hull cyan pinstripe (crop of the lake hero) |
+
+Images are compressed JPEGs served as static files (`next/image` with `images.unoptimized` for Cloudflare Pages export). Swap files in place to update photography without changing layout.
+
+When a packaged media kit exists, point the Gallery CTA at `/media/huanqi-hq-e498-media-kit.zip` instead of the mailto request.
 
 ## Forms
 
@@ -122,7 +129,3 @@ Confirm `/`, `/product`, `/dealers`, `/contact?topic=engineering`, `/sitemap.xml
 5. Wait for HTTPS (automatic Universal SSL). Then confirm `https://swankey.boats`.
 
 Do not point the domain at Vercel. `vercel.json` is only a static-host fallback; Cloudflare Pages is the production target.
-
-## Visual system
-
-Dark graphite / deep navy surfaces, teal/cyan accent (`#0f766e` / `#0891b2` range), Outfit + Source Sans 3, generous spacing. Mobile home hero stays immersive but is slightly under `100svh` so the next section peeks through; desktop hero is `100svh`.

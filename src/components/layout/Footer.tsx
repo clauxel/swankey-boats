@@ -4,21 +4,20 @@ import { nav, site } from "@/lib/site";
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-white/10 bg-graphite">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.3fr_1fr_1fr]">
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-cyan to-transparent" />
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="font-display text-sm font-semibold tracking-[0.2em] text-ice">
+          <p className="font-display text-sm font-semibold tracking-[0.28em] text-ice">
             {site.name}
           </p>
           <p className="mt-1 font-mono text-xs tracking-[0.16em] text-muted uppercase">
             {site.chineseName} · {site.domain}
           </p>
-          <p className="mt-4 max-w-md text-sm text-muted">{site.companyLine}</p>
+          <p className="mt-5 max-w-md text-sm text-muted">{site.companyLine}</p>
           <p className="mt-4 text-sm text-ice">{site.brandSlogan}</p>
         </div>
         <div>
-          <p className="font-mono text-[11px] tracking-[0.18em] text-cyan-bright uppercase">
-            Site
-          </p>
+          <p className="font-mono text-[11px] tracking-[0.22em] text-cyan uppercase">Site</p>
           <ul className="mt-4 grid gap-2 text-sm">
             {nav.map((item) => (
               <li key={item.href}>
@@ -27,17 +26,10 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link className="text-muted hover:text-ice" href="/contact">
-                Contact
-              </Link>
-            </li>
           </ul>
         </div>
         <div>
-          <p className="font-mono text-[11px] tracking-[0.18em] text-cyan-bright uppercase">
-            Contact
-          </p>
+          <p className="font-mono text-[11px] tracking-[0.22em] text-cyan uppercase">Contact</p>
           <ul className="mt-4 grid gap-2 text-sm text-muted">
             <li>
               <a className="hover:text-ice" href={`mailto:${site.email}`}>
@@ -47,7 +39,7 @@ export function Footer() {
             <li>{site.address}</li>
             <li>Working model {site.productModel}</li>
             <li>
-              <Link className="text-teal-bright hover:text-cyan-bright" href="/dealers">
+              <Link className="text-cyan hover:text-cyan-bright" href="/dealers">
                 Become a Dealer
               </Link>
             </li>
