@@ -17,14 +17,14 @@ export function Craftsmanship() {
       </Container>
       <div className="mt-10 grid gap-px bg-white/10 sm:grid-cols-2">
         {craftsmanship.map((item) => (
-          <article key={item.title} className="group relative isolate min-h-[18rem] sm:min-h-[22rem]">
+          <article key={item.title} className="group relative isolate">
             <Photo
               photo={item.photo}
-              className="absolute inset-0"
+              className="aspect-[4/3] w-full min-h-[16rem] sm:min-h-[22rem]"
               imgClassName="object-cover transition duration-700 group-hover:scale-[1.04]"
               sizes="(min-width: 640px) 50vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
             <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
               <h3 className="font-display text-xl font-semibold text-ice">{item.title}</h3>
               <p className="mt-2 max-w-md text-sm text-ice/80">{item.body}</p>

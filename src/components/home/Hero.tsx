@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export function HomeHero() {
   return (
-    <section className="relative isolate h-[calc(100svh-0.5rem)] min-h-[38rem] overflow-hidden md:h-svh">
+    <section className="relative isolate min-h-[100svh] overflow-hidden md:h-svh">
       <Image
         src={photos.heroLake.src}
         alt={photos.heroLake.alt}
@@ -16,8 +16,8 @@ export function HomeHero() {
         className="object-cover object-[58%_62%]"
       />
       <div className="photo-shade absolute inset-0" />
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-5 pb-8 sm:px-8 md:justify-end md:pb-14">
-        <div className="max-w-2xl pt-24">
+      <div className="relative z-10 mx-auto flex h-full min-h-[100svh] w-full max-w-6xl flex-col justify-end px-5 pb-8 pt-24 sm:px-8 md:min-h-0 md:pt-0 md:pb-14">
+        <div className="max-w-2xl">
           <p className="font-mono text-[11px] tracking-[0.28em] text-cyan uppercase">
             {site.name} · {site.productModel}
           </p>
@@ -33,9 +33,9 @@ export function HomeHero() {
             </ButtonLink>
           </div>
         </div>
-        <dl className="mt-10 grid grid-cols-2 gap-px self-stretch bg-white/10 sm:grid-cols-4">
+        <dl className="mt-10 grid grid-cols-2 gap-px self-stretch border border-white/15 bg-black/55 sm:grid-cols-4">
           {heroCopy.params.map((item) => (
-            <div key={item} className="bg-black/45 px-4 py-4 backdrop-blur-sm">
+            <div key={item} className="bg-black/50 px-4 py-4 backdrop-blur-md">
               <dt className="sr-only">Key fact</dt>
               <dd className="text-sm leading-snug font-medium text-ice">{item}</dd>
             </div>

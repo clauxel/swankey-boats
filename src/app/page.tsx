@@ -84,8 +84,8 @@ export default function HomePage() {
           </div>
           <Photo
             photo={photos.heroLake}
-            className="aspect-[4/3] w-full lg:aspect-[5/6]"
-            imgClassName="object-cover object-[62%_70%]"
+            className="aspect-[16/10] w-full"
+            imgClassName="object-cover object-[center_62%]"
             sizes="(min-width: 1024px) 40vw, 100vw"
           />
         </div>

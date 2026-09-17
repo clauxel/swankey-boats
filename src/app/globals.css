@@ -126,8 +126,8 @@ textarea.field {
 
 .photo-shade {
   background:
-    linear-gradient(180deg, rgba(5, 8, 12, 0.18) 0%, rgba(5, 8, 12, 0.08) 32%, rgba(5, 8, 12, 0.55) 72%, rgba(5, 8, 12, 0.92) 100%),
-    linear-gradient(90deg, rgba(5, 8, 12, 0.78) 0%, rgba(5, 8, 12, 0.28) 42%, rgba(5, 8, 12, 0.08) 100%);
+    linear-gradient(180deg, rgba(5, 8, 12, 0.35) 0%, rgba(5, 8, 12, 0.12) 28%, rgba(5, 8, 12, 0.45) 62%, rgba(5, 8, 12, 0.92) 100%),
+    linear-gradient(90deg, rgba(5, 8, 12, 0.88) 0%, rgba(5, 8, 12, 0.45) 38%, rgba(5, 8, 12, 0.12) 68%, rgba(5, 8, 12, 0.2) 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

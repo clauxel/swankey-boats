@@ -47,7 +47,7 @@ export function Header() {
             <span className="block font-display text-[13px] font-semibold tracking-[0.26em] text-ice">
               HUANQI
             </span>
-            <span className="block truncate font-mono text-[10px] tracking-[0.16em] text-muted uppercase">
+            <span className="block truncate font-mono text-[10px] tracking-[0.16em] text-ice/65 uppercase">
               {site.domain}
             </span>
           </span>
