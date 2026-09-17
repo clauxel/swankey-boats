@@ -16,7 +16,7 @@ export default function AboutPage() {
         lead={aboutCopy.lead}
         actions={
           <>
-            <ButtonLink href="#contact">Contact HUANQI</ButtonLink>
+            <ButtonLink href="#contact">Contact Swankey</ButtonLink>
             <ButtonLink href="/dealers" variant="secondary">
               Become a Dealer
             </ButtonLink>
@@ -47,7 +47,7 @@ export default function AboutPage() {
           <div>
             <Eyebrow>Contact</Eyebrow>
             <h2 className="font-display text-3xl font-semibold text-ice">
-              Contact HUANQI
+              Contact Swankey
             </h2>
             <ul className="mt-6 grid gap-3 text-sm text-muted">
               <li>

@@ -1,0 +1,22 @@
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { writeFile, mkdir } from 'node:fs/promises';
+const run = promisify(execFile);
+const base = process.argv[2] || 'https://swankey-boats.yangdengkui01.workers.dev';
+const paths = ['/', '/product', '/technology', '/gallery', '/dealers', '/about', '/contact', '/robots.txt', '/sitemap.xml', '/manifest.webmanifest', '/brand/swankey-logo.png', '/brand/swankey-icon.png', '/opengraph-image', '/apple-icon', '/not-a-real-page'];
+const results = await Promise.all(paths.map(async path => {
+ const { stdout } = await run('curl', ['-sS', '-L', '--max-time', '30', '-o', '/dev/null', '-w', '%{http_code} %{content_type}', base + path], { maxBuffer: 1024 * 1024 });
+ const [status, ...type] = stdout.trim().split(' ');
+ const expected = path === '/not-a-real-page' ? '404' : '200';
+ return { path, status: Number(status), contentType: type.join(' '), passed: status === expected };
+}));
+const { stdout: home } = await run('curl', ['-sS', '--max-time', '30', base + '/'], { maxBuffer: 1024 * 1024 });
+results.push({ path: '/', check: 'brand and current media', passed: home.includes('swankey-water-film.mp4') && home.includes('Go shallow.') && !/HUANQI|浣启|Media slot/.test(home) });
+const { stdout: video } = await run('curl', ['-sS', '-D', '-', '-o', '/dev/null', '--max-time', '30', '-H', 'Range: bytes=0-1023', base + '/media/swankey-water-film.mp4']);
+results.push({ path: '/media/swankey-water-film.mp4', check: 'video range', passed: /(?:HTTP\/2|HTTP\/1.1) 206/.test(video) && /content-type: video\/mp4/i.test(video) && /content-length: [1-9][0-9]*/i.test(video) });
+const { stdout: sitemap } = await run('curl', ['-sS', '--max-time', '30', base + '/sitemap.xml']);
+results.push({ path: '/sitemap.xml', check: 'live canonical URLs', passed: sitemap.includes(base + '/product') });
+await mkdir('.release', { recursive: true });
+await writeFile('.release/live-checks.json', JSON.stringify({ base, checkedAt: new Date().toISOString(), results }, null, 2));
+console.log(JSON.stringify(results, null, 2));
+if(results.some(result => !result.passed)) process.exitCode = 1;

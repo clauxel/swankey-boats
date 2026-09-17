@@ -12,11 +12,11 @@ export const heroCopy = {
     "Sample and pilot orders",
   ] as const,
   sceneNote:
-    "Media slot — Hero render: European inland lake at dawn. HQ E498 moving slowly along a grass edge, then holding station. Deep graphite hull, teal brand line, wide casting decks, low console, hidden jet intake.",
+    "Swankey E498 design with a graphite hull, blue detailing, wide casting decks and integrated jet propulsion.",
 };
 
 export const specs = [
-  { label: "Working model", value: "HQ E498" },
+  { label: "Working model", value: "E498" },
   { label: "Product type", value: "Electric Jet Bass Boat" },
   {
     label: "Use waters",
@@ -247,7 +247,7 @@ export const gallerySlots = [
     kind: "Render",
     title: "Hero — inland lake at dawn",
     prompt:
-      "European inland lake at dawn. Slow pass along a grass edge, clean water, clear HQ E498 silhouette. Deep graphite hull, teal brand line.",
+      "European inland lake at dawn. Slow pass along a grass edge, clean water, clear E498 silhouette. Deep graphite hull, teal brand line.",
   },
   {
     id: "three-quarter",
@@ -318,7 +318,7 @@ export const gallerySlots = [
 ] as const;
 
 export const dealerCopy = {
-  title: "Become a HUANQI Dealer",
+  title: "Become a Swankey Dealer",
   lead: "We are building a European dealer network for integrated electric jet bass boats, starting with France, Germany and other active lake and reservoir markets.",
   cooperation:
     "Initial cooperation is non-exclusive. Sample boats and small pilot orders are available. OEM/ODM inquiries are welcome for dealers, clubs, rental operators and tournament partners.",
@@ -342,12 +342,12 @@ export const dealerCopy = {
     {
       step: "01",
       title: "Apply",
-      body: "Submit company, market and volume details. HQ E498 is the default working model.",
+      body: "Submit company, market and volume details. E498 is the default working model.",
     },
     {
       step: "02",
       title: "Review",
-      body: "HUANQI reviews market fit, channel type and service capacity. France and Germany are first.",
+      body: "Swankey reviews market fit, channel type and service capacity. France and Germany are first.",
     },
     {
       step: "03",
@@ -370,25 +370,25 @@ export const dealerCopy = {
 };
 
 export const aboutCopy = {
-  title: "About HUANQI INNOVATION",
+  title: "About Swankey",
   lead: site.companyLine,
   story: [
-    `${site.name} (${site.chineseName}) was founded in 2025 in Shenzhen, China.`,
+    `${site.name} was founded in 2025 in Shenzhen, China.`,
     "The company develops electric fishing boats and integrated shallow-water boat systems for overseas customers and channel partners.",
-    "The working model is HQ E498, an electric jet bass boat for lakes, reservoirs, inland waterways and protected near-shore areas.",
+    "The working model is E498, an electric jet bass boat for lakes, reservoirs, inland waterways and protected near-shore areas.",
     site.brandSlogan,
   ],
   credibility: [
     {
       title: "Shenzhen research and build",
-      body: "Design, integration and manufacturing resources sit in Shenzhen, Guangdong, China — with an English-first overseas site at swankey.boats.",
+      body: "Design, integration and manufacturing resources sit in Shenzhen, Guangdong, China — serving international customers through swankey.boats.",
     },
     {
-      title: "Engineering tone",
-      body: "Public copy stays specific: shallow water, inland lakes, integrated propulsion, station keeping, service access and channel support. Detailed figures belong in the quotation and build sheet.",
+      title: "Integrated engineering",
+      body: "Propulsion, station keeping and fishing functions are designed as one system, with practical service access and support for our channel partners.",
     },
     {
-      title: "Pilot-ready, not vapour",
+      title: "Start with a sample boat",
       body: "Sample boats and small pilot orders are available. Standard orders 4 months; custom orders 6 months; 1 year standard warranty.",
     },
   ],
@@ -396,7 +396,7 @@ export const aboutCopy = {
 
 export const faqs = [
   {
-    q: "What waters is HQ E498 intended for?",
+    q: "What waters is E498 intended for?",
     a: "Lakes, reservoirs, inland waterways and protected near-shore areas. Recommended use is shallow-water lure fishing, guiding, clubs and rental operations.",
   },
   {
@@ -425,35 +425,35 @@ export const pageMeta = {
   home: {
     title: "Electric Jet Bass Boat for Shallow Water",
     description:
-      "HUANQI INNOVATION HQ E498 — integrated electric jet bass boat with GNSS station keeping and a purpose-built casting deck for European lakes, reservoirs and shallow waterways.",
+      "Swankey E498 — integrated electric jet bass boat with GNSS station keeping and a purpose-built casting deck for European lakes, reservoirs and shallow waterways.",
   },
   product: {
-    title: "HQ E498 Electric Jet Bass Boat",
+    title: "E498 Electric Jet Bass Boat",
     description:
-      "HQ E498 specifications, standard configuration, options, deck layout and shallow-water fishing scenarios. 4.98 m class aluminum monohull.",
+      "E498 specifications, standard configuration, options, deck layout and shallow-water fishing scenarios. 4.98 m class aluminum monohull.",
   },
   technology: {
     title: "Integrated Electric Jet and Station Keeping",
     description:
-      "How HQ E498 combines an integrated electric jet, protected intake, GNSS station keeping, heading hold, current-hold and a dealer-ready maintenance path.",
+      "How E498 combines an integrated electric jet, protected intake, GNSS station keeping, heading hold, current-hold and a dealer-ready maintenance path.",
   },
   gallery: {
     title: "Gallery and Media Kit",
     description:
-      "Placeholder media grid for HQ E498 renders, details, technical drawings and video. Request the HUANQI media kit.",
+      "Explore life on the water, E498 design and fishing films. Request the Swankey media kit.",
   },
   dealers: {
-    title: "Become a HUANQI Dealer",
+    title: "Become a Swankey Dealer",
     description:
-      "Non-exclusive European dealer programme for HQ E498, starting with France and Germany. Sample boats, pilot orders and OEM/ODM inquiries.",
+      "Non-exclusive European dealer programme for E498, starting with France and Germany. Sample boats, pilot orders and OEM/ODM inquiries.",
   },
   about: {
     title: "About and Contact",
     description:
-      "HUANQI INNOVATION (浣启创新), founded 2025 in Shenzhen. Contact zhongya789@gmail.com — swankey.boats.",
+      "Swankey, founded 2025 in Shenzhen. Contact zhongya789@gmail.com — swankey.boats.",
   },
   contact: {
-    title: "Contact HUANQI INNOVATION",
+    title: "Contact Swankey",
     description:
       "Request product information, talk to engineering or start a dealer conversation. Shenzhen, Guangdong, China.",
   },

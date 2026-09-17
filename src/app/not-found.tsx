@@ -8,7 +8,7 @@ export default function NotFound() {
       <PageHero
         eyebrow="404"
         title="This page is not on the chart"
-        lead="The URL does not match a HUANQI page. Return home or open the dealer application."
+        lead="The URL does not match a Swankey page. Return home or open the dealer application."
         actions={
           <>
             <ButtonLink href="/">Home</ButtonLink>
@@ -22,7 +22,7 @@ export default function NotFound() {
         <p className="text-sm text-muted">
           Looking for the boat? Start at{" "}
           <Link className="text-cyan-bright" href="/product">
-            HQ E498
+            E498
           </Link>
           .
         </p>

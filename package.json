@@ -2,14 +2,14 @@
   "name": "swankey-boats",
   "version": "1.0.0",
   "private": true,
-  "description": "HUANQI INNOVATION marketing site for the HQ E498 electric jet bass boat (swankey.boats).",
+  "description": "Swankey marketing site for the E498 electric jet bass boat (swankey.boats).",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "pages:build": "next build",
-    "preview": "wrangler pages dev",
-    "deploy": "npm run build && wrangler pages deploy",
-    "start": "wrangler pages dev",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "pages:build": "npm run build",
+    "preview": "wrangler dev --config wrangler.worker.jsonc",
+    "deploy": "node scripts/deploy.mjs",
+    "start": "npm run preview",
     "lint": "eslint"
   },
   "dependencies": {

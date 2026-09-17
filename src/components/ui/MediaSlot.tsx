@@ -24,20 +24,18 @@ export function MediaSlot({
   return (
     <figure className={className}>
       <div
-        className={`relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b1620] ${ratios[ratio]}`}
+        className={`relative overflow-hidden rounded-2xl border border-white/10 bg-[#102236] ${ratios[ratio]}`}
       >
         <div
           className="absolute inset-0 opacity-70"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(34,211,238,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.05) 1px, transparent 1px)",
+              "linear-gradient(rgba(71,148,212,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(71,148,212,0.05) 1px, transparent 1px)",
             backgroundSize: "28px 28px",
           }}
         />
         {children}
-        <span className="absolute top-3 left-3 z-10 rounded-full border border-white/15 bg-black/40 px-2.5 py-1 font-mono text-[10px] tracking-[0.16em] text-cyan-bright uppercase">
-          Media slot
-        </span>
+
       </div>
       <figcaption className="mt-3">
         <p className="text-sm font-semibold text-ice">{label}</p>

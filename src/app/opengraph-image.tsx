@@ -1,40 +1,16 @@
 import { ImageResponse } from "next/og";
-import { site } from "@/lib/site";
-
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 export const dynamic = "force-static";
-export const alt = `${site.name} — ${site.productModel} electric jet bass boat`;
+export const alt = "Swankey — Go shallow. Fish further.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-
-export default function OpenGraphImage() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: 64,
-          background: "linear-gradient(135deg, #070d12 0%, #0b1f2a 48%, #0f766e 160%)",
-          color: "#e8eef2",
-        }}
-      >
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <div style={{ fontSize: 22, letterSpacing: 6, color: "#67e8f9" }}>
-            HUANQI INNOVATION · SWANKEY.BOATS
-          </div>
-          <div style={{ fontSize: 64, fontWeight: 650, lineHeight: 1.05, maxWidth: 920 }}>
-            A New Electric Jet Bass Boat for Shallow Water
-          </div>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
-          <span>HQ E498 · 4.98 m class</span>
-          <span>{site.brandSlogan}</span>
-        </div>
-      </div>
-    ),
-    { ...size },
-  );
+export default async function OpenGraphImage() {
+  const [logo, boat] = await Promise.all(["brand/swankey-logo.png", "media/e498-design.png"].map(file => readFile(join(process.cwd(), "public", file))));
+  return new ImageResponse(<div style={{display:"flex",position:"relative",width:"100%",height:"100%",background:"#091827",padding:60,color:"white",flexDirection:"column"}}>
+    <img alt="Swankey" src={`data:image/png;base64,${logo.toString("base64")}`} width={280} height={93}/>
+    <div style={{display:"flex",fontSize:76,fontWeight:700,letterSpacing:-3,lineHeight:1.05,marginTop:45,flexDirection:"column"}}><span>Go shallow.</span><span style={{color:"#6cbcf2"}}>Fish further.</span></div>
+    <img alt="E498 design" src={`data:image/png;base64,${boat.toString("base64")}`} width={640} height={427} style={{position:"absolute",right:0,bottom:0}}/>
+    <div style={{position:"absolute",bottom:55,left:60,fontSize:20,letterSpacing:3,color:"#a4bbcd"}}>E498 · ELECTRIC JET BASS BOAT</div>
+  </div>, size);
 }

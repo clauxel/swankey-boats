@@ -34,7 +34,7 @@ const empty: DealerPayload = {
 
 function FieldError({ message }: { message?: string }) {
   if (!message) return null;
-  return <p className="mt-1 text-sm text-red-300">{message}</p>;
+  return <p className="mt-1 text-sm text-sky-200">{message}</p>;
 }
 
 function toggle(list: string[], value: string) {
@@ -276,7 +276,7 @@ export function DealerForm() {
       {status === "sent" ? (
         <p className="mt-4 text-sm text-teal-bright" role="status">
           {method === "endpoint"
-            ? "Application sent. HUANQI will follow up by email."
+            ? "Application sent. Swankey will follow up by email."
             : "Your email client should open with the encoded application. If it does not, write to zhongya789@gmail.com."}
         </p>
       ) : null}

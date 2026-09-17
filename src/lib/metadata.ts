@@ -14,7 +14,7 @@ export function buildMetadata(
       : `${page.title} | ${site.name}`;
 
   return {
-    title,
+    title: { absolute: title },
     description: page.description,
     alternates: { canonical: url },
     openGraph: {

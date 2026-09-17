@@ -46,3 +46,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local release and design evidence
+.release/
+docs/reference/
+docs/design-qa.md
+design-qa.md

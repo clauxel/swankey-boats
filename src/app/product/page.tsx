@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { MediaSlot } from "@/components/ui/MediaSlot";
 import { Eyebrow, PageHero, Section } from "@/components/ui/Section";
 import { DeckPlan } from "@/components/visual/Diagrams";
-import { BassBoat } from "@/components/visual/LakeScene";
+import Image from "next/image";
 import {
   deckStory,
   faqs,
@@ -35,30 +35,21 @@ export default function ProductPage() {
       />
 
       <Section className="pt-0">
-        <MediaSlot
-          label="HQ E498 hero still"
-          caption="White-background or waterside 45° view. Keep length/beam proportions consistent with the working model."
-          ratio="wide"
-        >
-          <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-10">
-            <BassBoat className="max-h-full w-full" />
-          </div>
-        </MediaSlot>
+        <figure><div className="product-render"><Image src="/media/e498-design.png" width={1536} height={1024} alt="Swankey E498 design rendering" priority /></div><figcaption className="media-caption">E498 design — configuration and details are confirmed in your build sheet.</figcaption></figure>
       </Section>
 
-      <Section className="pt-0">
+      <Section className="pt-0" id="specifications">
         <Eyebrow>Specifications</Eyebrow>
-        <h2 className="font-display text-3xl font-semibold text-ice">HQ E498 product parameters</h2>
+        <h2 className="font-display text-3xl font-semibold text-ice">E498 product parameters</h2>
         <p className="mt-3 max-w-2xl text-muted">
-          Base information for the website. Formal quotation, configuration sheet and delivery files
-          carry the detailed technical specification.
+          Explore the E498 configuration. Your quotation and build sheet include the detailed specification for your market.
         </p>
         <div className="mt-8 overflow-x-auto rounded-3xl border border-white/10">
           <table className="min-w-[640px] w-full text-left text-sm">
             <thead className="bg-white/4 font-mono text-[11px] tracking-[0.14em] text-cyan-bright uppercase">
               <tr>
                 <th className="px-5 py-4">Parameter</th>
-                <th className="px-5 py-4">Website wording</th>
+                <th className="px-5 py-4">Specification</th>
               </tr>
             </thead>
             <tbody>
@@ -110,7 +101,7 @@ export default function ProductPage() {
         <Eyebrow>Deck layout</Eyebrow>
         <h2 className="font-display text-3xl font-semibold text-ice">Purpose-built for the cast</h2>
         <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <MediaSlot label="Deck plan" caption="Replace with overhead render: bow deck, console, livewell, aft deck, hidden jet.">
+          <MediaSlot label="Deck plan" caption="Open casting decks, practical storage and integrated controls.">
             <div className="absolute inset-0 flex items-center p-6">
               <DeckPlan className="w-full" />
             </div>

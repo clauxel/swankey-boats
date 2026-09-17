@@ -13,7 +13,7 @@ export function BassBoat({ className = "" }: { className?: string }) {
       height="100%"
       preserveAspectRatio="xMidYMid meet"
       role="img"
-      aria-label="Abstract HQ E498 bass boat silhouette"
+      aria-label="Abstract E498 bass boat silhouette"
     >
       <defs>
         <linearGradient id={hull} x1="0" x2="1" y1="0" y2="1">
@@ -21,17 +21,17 @@ export function BassBoat({ className = "" }: { className?: string }) {
           <stop offset="16%" stopColor="#94a3b8" />
           <stop offset="22%" stopColor="#334155" />
           <stop offset="70%" stopColor="#0f172a" />
-          <stop offset="88%" stopColor="#134e4a" />
-          <stop offset="100%" stopColor="#67e8f9" />
+          <stop offset="88%" stopColor="#173e60" />
+          <stop offset="100%" stopColor="#9bd8ff" />
         </linearGradient>
         <linearGradient id={deck} x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="#f8fafc" />
           <stop offset="100%" stopColor="#cbd5e1" />
         </linearGradient>
         <linearGradient id={water} x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#67e8f9" stopOpacity="0.0" />
-          <stop offset="45%" stopColor="#22d3ee" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#042f2e" stopOpacity="0.0" />
+          <stop offset="0%" stopColor="#9bd8ff" stopOpacity="0.0" />
+          <stop offset="45%" stopColor="#6cbcf2" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#0c2941" stopOpacity="0.0" />
         </linearGradient>
       </defs>
       <ellipse cx="320" cy="214" rx="250" ry="18" fill={`url(#${water})`} />
@@ -42,7 +42,7 @@ export function BassBoat({ className = "" }: { className?: string }) {
       <path
         d="M90 182c40 6 120 12 230 12 110 0 188-6 228-12"
         fill="none"
-        stroke="#2dd4bf"
+        stroke="#67b5ea"
         strokeWidth="3"
       />
       <path
@@ -50,22 +50,22 @@ export function BassBoat({ className = "" }: { className?: string }) {
         fill={`url(#${deck})`}
         opacity="0.96"
       />
-      <rect x="286" y="108" width="52" height="46" rx="8" fill="#070d12" />
-      <rect x="292" y="114" width="40" height="16" rx="3" fill="#67e8f9" opacity="0.55" />
+      <rect x="286" y="108" width="52" height="46" rx="8" fill="#07111c" />
+      <rect x="292" y="114" width="40" height="16" rx="3" fill="#9bd8ff" opacity="0.55" />
       <path d="M300 108h24v-10c0-6-4-10-12-10s-12 4-12 10z" fill="#0b1f2a" />
-      <rect x="160" y="142" width="88" height="8" rx="2" fill="#0f766e" opacity="0.85" />
-      <rect x="392" y="142" width="96" height="8" rx="2" fill="#0f766e" opacity="0.85" />
-      <circle cx="534" cy="186" r="7" fill="#67e8f9" />
+      <rect x="160" y="142" width="88" height="8" rx="2" fill="#246994" opacity="0.85" />
+      <rect x="392" y="142" width="96" height="8" rx="2" fill="#246994" opacity="0.85" />
+      <circle cx="534" cy="186" r="7" fill="#9bd8ff" />
       <path
         d="M508 188c18 2 28 8 36 16"
         fill="none"
-        stroke="#67e8f9"
+        stroke="#9bd8ff"
         strokeWidth="2"
       />
       <path
         d="M80 188c40 10 140 22 240 22s200-12 240-22"
         fill="none"
-        stroke="#22d3ee"
+        stroke="#6cbcf2"
         strokeWidth="2"
         opacity="0.45"
       />
@@ -92,7 +92,7 @@ export function LakeScene({ note }: { note: string }) {
           </linearGradient>
         </defs>
         <rect width="1440" height="900" fill="url(#sky)" />
-        <ellipse cx="1120" cy="190" rx="260" ry="100" fill="#67e8f9" opacity="0.16" />
+        <ellipse cx="1120" cy="190" rx="260" ry="100" fill="#9bd8ff" opacity="0.16" />
         <path
           d="M0 430 C 180 390, 280 470, 460 450 S 780 390, 980 430 1280 500, 1440 470 V 900 H 0 Z"
           fill="#0a2430"
@@ -102,9 +102,9 @@ export function LakeScene({ note }: { note: string }) {
           fill="#082028"
         />
         <g opacity="0.55">
-          <path d="M1180 540 1220 400 1234 540" fill="#14b8a6" />
-          <path d="M1260 548 1310 360 1328 548" fill="#2dd4bf" />
-          <path d="M1348 552 1388 420 1402 552" fill="#0f766e" />
+          <path d="M1180 540 1220 400 1234 540" fill="#328ed4" />
+          <path d="M1260 548 1310 360 1328 548" fill="#67b5ea" />
+          <path d="M1348 552 1388 420 1402 552" fill="#246994" />
         </g>
       </svg>
       <div
@@ -113,8 +113,8 @@ export function LakeScene({ note }: { note: string }) {
       >
         <BassBoat />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-[#070d12] via-[#070d12]/72 to-[#070d12]/10 sm:via-[#070d12]/55 sm:to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#070d12] to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#07111c] via-[#07111c]/72 to-[#07111c]/10 sm:via-[#07111c]/55 sm:to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#07111c] to-transparent" />
       <p className="absolute top-20 right-4 hidden max-w-xs rounded-xl border border-white/10 bg-black/50 p-3 text-[11px] leading-5 text-ice/80 sm:block md:right-8">
         {note}
       </p>

@@ -18,7 +18,7 @@ export default function TechnologyPage() {
           <>
             <ButtonLink href="/contact?topic=engineering">Talk to Engineering</ButtonLink>
             <ButtonLink href="/product" variant="secondary">
-              HQ E498 specifications
+              E498 specifications
             </ButtonLink>
           </>
         }
@@ -40,7 +40,7 @@ export default function TechnologyPage() {
         <div className="grid gap-8 lg:grid-cols-2">
           <MediaSlot
             label="Jet system cutaway"
-            caption="Simple section: protected intake, electric pump, steering nozzle. Replace with engineering drawing."
+            caption="Protected intake, electric pump and steering nozzle — system overview."
           >
             <div className="absolute inset-0 flex items-center p-4">
               <JetCutaway className="w-full" />
@@ -76,7 +76,7 @@ export default function TechnologyPage() {
           </div>
           <MediaSlot
             label="Station-keeping diagram"
-            caption="Replace with a control schematic or on-water hold sequence."
+            caption="GNSS positioning, heading hold and current compensation."
           >
             <div className="absolute inset-0 flex items-center p-4">
               <StationKeepingDiagram className="w-full" />
@@ -96,7 +96,7 @@ export default function TechnologyPage() {
           pilot order.
         </p>
         <div className="mt-8">
-          <MediaSlot label="Service sequence" caption="Replace with labelled access photos from the sample boat.">
+          <MediaSlot label="Service sequence" caption="A clear path from inspection to service and support.">
             <div className="absolute inset-0 flex items-center p-4">
               <ServicePath className="w-full" />
             </div>

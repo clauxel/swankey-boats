@@ -17,7 +17,7 @@ export default function DealersPage() {
           <>
             <ButtonLink href="#apply">Apply to Become a Dealer</ButtonLink>
             <ButtonLink href="/product" variant="secondary">
-              Review HQ E498
+              Review E498
             </ButtonLink>
           </>
         }
@@ -75,8 +75,7 @@ export default function DealersPage() {
             Apply to Become a Dealer
           </h2>
           <p className="mt-3 text-muted">
-            Required fields match the brief: company and contact, country, email and phone, sales
-            channels, target market, HQ E498 by default, and an expected quantity range.
+            Tell us about your business, local market and the boats you would like to bring to your customers. Our team will follow up to discuss the next step.
           </p>
         </div>
         <DealerForm />

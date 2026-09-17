@@ -50,7 +50,7 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <Section className="pb-10 pt-28 sm:pb-12 sm:pt-32">
+    <Section className="page-hero mb-14 pb-14 pt-16 sm:pb-20 sm:pt-24">
       <Eyebrow>{eyebrow}</Eyebrow>
       <h1 className="font-display max-w-4xl text-4xl leading-[1.05] font-semibold tracking-tight text-ice sm:text-6xl">
         {title}

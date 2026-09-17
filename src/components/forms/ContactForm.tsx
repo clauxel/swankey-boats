@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/Button";
 
 function FieldError({ message }: { message?: string }) {
   if (!message) return null;
-  return <p className="mt-1 text-sm text-red-300">{message}</p>;
+  return <p className="mt-1 text-sm text-sky-200">{message}</p>;
 }
 
 function readTopicParam(fallback: string) {
@@ -148,7 +148,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
       </label>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Button type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "Preparing…" : "Contact HUANQI"}
+          {status === "sending" ? "Preparing…" : "Contact Swankey"}
         </Button>
         <p className="text-sm text-muted">
           {endpointConfigured
@@ -159,7 +159,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
       {status === "sent" ? (
         <p className="mt-4 text-sm text-teal-bright" role="status">
           {method === "endpoint"
-            ? "Message sent. HUANQI will follow up by email."
+            ? "Message sent. Swankey will follow up by email."
             : "Your email client should open with the encoded message."}
         </p>
       ) : null}

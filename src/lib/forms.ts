@@ -105,7 +105,7 @@ export function validateContact(data: ContactPayload) {
 export function dealerMailto(data: DealerPayload) {
   const subject = `Dealer application — ${data.companyName} (${data.country})`;
   const body = [
-    "HUANQI INNOVATION dealer application",
+    "Swankey dealer application",
     "Domain: swankey.boats",
     "",
     `Company name: ${data.companyName}`,
@@ -133,7 +133,7 @@ export function contactMailto(data: ContactPayload) {
     inquiryTopics.find((item) => item.value === data.topic)?.label ?? data.topic;
   const subject = `${topic} — ${data.name}`;
   const body = [
-    "HUANQI INNOVATION website inquiry",
+    "Swankey website inquiry",
     "Domain: swankey.boats",
     "",
     `Name: ${data.name}`,

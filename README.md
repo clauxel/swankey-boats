@@ -1,128 +1,50 @@
-# swankey.boats
+# Swankey
 
-English-first marketing site for **HUANQI INNOVATION** (浣启创新) and the **HQ E498** electric jet bass boat.
+Swankey's boat catalogue and dealer enquiry website, built with Next.js, TypeScript and Tailwind CSS.
 
-Production domain: [swankey.boats](https://swankey.boats)
+Live site: [Swankey Boats](https://swankey-boats.yangdengkui01.workers.dev/).
 
-Copy, specifications, dealer flow and visual direction follow the HUANQI website design brief. Public pages do not invent performance numbers beyond that brief. Quote-level figures belong in the quotation and build sheet.
+## Development
 
-## Stack
-
-- Next.js (App Router) + TypeScript
-- Tailwind CSS v4
-- Static export (`output: "export"`) → Cloudflare Pages
-
-## Scripts
-
-```bash
-npm install
-npm run dev          # local Next.js server
-npm run build        # static export to out/ (Cloudflare-compatible)
-npm run pages:build  # alias for npm run build
-npm run preview      # serve out/ with Wrangler Pages
-npm run deploy       # build, then wrangler pages deploy
+```sh
+npm ci
+npm run dev
 npm run lint
+npm run build
+npm run preview
 ```
 
-## Content map
+The static export is written to `out/`. Wrangler previews the same static assets used in production. Builds use Webpack and system fonts, without a build-time font service dependency.
 
-| Route | Page | Primary CTA |
-| --- | --- | --- |
-| `/` | Home — 100svh hero, differentiation, product snapshot, dealer band, gallery teaser | Become a Dealer |
-| `/product` | HQ E498 specs, standard config, options, deck layout, shallow/weed scenarios | Request Product Information |
-| `/technology` | Electric jet, protected intake, GNSS / heading / current-hold, maintenance path | Talk to Engineering |
-| `/gallery` | Labelled media slots for renders, details, drawings and video | Download Media Kit |
-| `/dealers` | Non-exclusive Europe programme (France / Germany first) + application form | Apply to Become a Dealer |
-| `/about` | Company credibility + contact | Contact HUANQI |
-| `/contact` | Inquiry form (`?topic=product\|dealer\|engineering\|media\|oem\|other`) | Contact HUANQI |
+## Pages
 
-Brand lines used on the site:
+- Home: full-screen boating film, product carousel, rotating E498 highlights and editorial links.
+- E498: product design rendering, specifications, configuration options and deck layout.
+- Technology: integrated propulsion, positioning and service diagrams.
+- On the water: film, photography and E498 design.
+- Dealers, About and Contact: company information and enquiry forms.
 
-- Company: HUANQI INNOVATION develops electric fishing boats and integrated shallow-water boat systems.
-- Brand slogan: Engineered for Shallow Water. Built for the Cast.
-- Product slogan: Go Shallow. Hold Steady. Fish Further.
-- Contact: zhongya789@gmail.com · Shenzhen, Guangdong, China
+Content is maintained in `src/lib/content.ts` and `src/lib/site.ts`.
 
-Structured content lives in `src/lib/content.ts` and `src/lib/site.ts`. Change copy there before touching layout.
+## Visual identity and media
 
-## Placeholder media
+The visual identity combines navy backgrounds, marine blue accents and an original circular horizon/wave emblem. Motion includes horizontal card scrolling, highlight crossfades, image hover effects and a compact sticky header. Reduced-motion preferences are respected; automatic video and highlights have pause controls.
 
-There are no sample-boat photographs in this repository. Each frame is a labelled **media slot** (CSS/SVG lake and boat diagrams, not stock photos).
+Logo files are in `public/brand/`. Film, stills and the E498 design illustration are in `public/media/`; see `docs/media.md` for asset provenance. The E498 illustration is a design rendering; final configuration is confirmed in the build sheet. Product diagrams remain schematic.
 
-To replace a slot:
+## Enquiry forms
 
-1. Export renders/photos/video using the brief’s shot list (dawn lake hero, 45° / side / plan, bow, console, jet intake, livewell, cutaway, station-keeping, service path, underway clips).
-2. Place files under `public/media/` using the slot id as the filename, for example:
-   - `public/media/hero-dawn.jpg`
-   - `public/media/three-quarter.jpg`
-   - `public/media/video-run.mp4`
-3. Swap the SVG child inside the matching `MediaSlot` on Home, Product, Technology or Gallery for a Next.js `<Image>` or `<video>`. Keep the “Media slot” label until the asset is final. Next.js image optimisation is disabled (`images.unoptimized`) because this site is a static export.
-4. When a packaged media kit exists, point the Gallery CTA at `/media/huanqi-hq-e498-media-kit.zip` instead of the mailto request.
+Forms validate required fields and open an addressed email draft by default. They do not claim that a message has been sent. An optional `NEXT_PUBLIC_FORM_ENDPOINT` HTTPS endpoint can accept JSON submissions. The variable must be supplied at build time; no secrets belong in public environment variables.
 
-Do not drop generic fishing-boat stock into these slots. The brief asks for model-accurate graphite hull, teal accent, wide decks, low console and hidden jet intake.
+## Deployment
 
-## Forms
+Production uses the existing Cloudflare Worker `swankey-boats` and `wrangler.worker.jsonc` to serve static assets. A small media handler provides byte-range responses so browser video controls can seek immediately. The legacy Pages configuration is retained for compatibility.
 
-Default behaviour is **client-side validation** plus `mailto:zhongya789@gmail.com` with an encoded subject and body. No API keys are committed. There is no Node server or Pages Function.
-
-To use [Formspree](https://formspree.io) or [Getform](https://getform.io) without changing page code:
-
-1. Create a form endpoint in that service.
-2. Copy `.env.example` to `.env.local` for local builds, or set the variable at **build** time (static export inlines `NEXT_PUBLIC_*` values).
-3. Set `NEXT_PUBLIC_FORM_ENDPOINT` to the full HTTPS action URL (Formspree `https://formspree.io/f/xxxx` or Getform `https://getform.io/f/xxxx`).
-4. Allow JSON posts from `https://swankey.boats` (and the `*.pages.dev` preview URL) in the provider settings.
-5. Rebuild and redeploy. Both dealer and contact forms will POST JSON (`type: dealer-application | contact`) and fall back to mailto if the endpoint errors.
-
-Dealer required fields from the brief: company name, contact person, country/region, email, phone/WhatsApp, sales channels, target market, interested model (defaults to HQ E498), expected quantity range.
-
-## SEO
-
-- Per-page title, description, canonical, Open Graph and Twitter tags
-- JSON-LD Organization / WebSite / Product
-- `app/sitemap.ts` → `/sitemap.xml`
-- `app/robots.ts` → `/robots.txt`
-- Generated Open Graph image at `/opengraph-image`
-
-`metadataBase` is `https://swankey.boats`.
-
-## Deploy on Cloudflare Pages
-
-`npm run build` writes a fully static site to `out/` (`next.config.ts` sets `output: "export"`). Deploy that directory with Wrangler from your machine.
-
-### One-liner
-
-```bash
-npm run build && npx wrangler pages deploy out --project-name=swankey-boats
-```
-
-Equivalent helpers (same project name and output dir come from `wrangler.jsonc`):
-
-```bash
-npx wrangler login
+```sh
+npm run deploy -- --dry-run
 npm run deploy
 ```
 
-First time: Wrangler will create the Pages project `swankey-boats` if it does not exist, then publish to `https://swankey-boats.pages.dev`.
+The release script checks the existing Worker and its bindings, saves previous deployment IDs locally, runs lint and a production build, then deploys while preserving variables. It accepts `CLOUDFLARE_API_KEY`, `CLOUDFLARE_EMAIL` and optional `CLOUDFLARE_ACCOUNT_ID` from the environment; on macOS it can read the corresponding existing Keychain entries. It never writes credentials to disk.
 
-Optional form endpoint at build time:
-
-```bash
-NEXT_PUBLIC_FORM_ENDPOINT=https://formspree.io/f/xxxx npm run build
-npx wrangler pages deploy out --project-name=swankey-boats
-```
-
-Confirm `/`, `/product`, `/dealers`, `/contact?topic=engineering`, `/sitemap.xml` and `/robots.txt` after deploy.
-
-### Attach custom domain swankey.boats
-
-1. Open [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **swankey-boats** → **Custom domains**.
-2. Add `swankey.boats`. Optionally add `www.swankey.boats` and redirect it to the apex (Rules → Redirect Rules, or the domain’s WWW redirect).
-3. If the domain’s DNS is already on Cloudflare, the dashboard creates the record for you (apex CNAME flattening to `swankey-boats.pages.dev`).
-4. If DNS is at another registrar, add the records Cloudflare shows — typically a CNAME for `www` to `swankey-boats.pages.dev`, and CNAME flattening / ALIAS / ANAME for the apex (or move nameservers to Cloudflare).
-5. Wait for HTTPS (automatic Universal SSL). Then confirm `https://swankey.boats`.
-
-Do not point the domain at Vercel. `vercel.json` is only a static-host fallback; Cloudflare Pages is the production target.
-
-## Visual system
-
-Dark graphite / deep navy surfaces, teal/cyan accent (`#0f766e` / `#0891b2` range), Outfit + Source Sans 3, generous spacing. Mobile home hero stays immersive but is slightly under `100svh` so the next section peeks through; desktop hero is `100svh`.
+Per-page metadata, structured data, robots and sitemap remain available. The canonical URL defaults to the live Workers URL; `NEXT_PUBLIC_SITE_URL` can set an attached custom domain at build time.
