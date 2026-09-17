@@ -46,6 +46,8 @@ npm run video:test
 
 Build the request using the [OpenRouter video API](https://openrouter.ai/docs/guides/overview/multimodal/video-generation) and the current model catalog. Video edits use `input_references` with `video_url` and `image_url` entries. Do not combine these with `frame_images`, which would override the references. Job records prevent accidental repeat submissions; resume an existing job with `status`. An unconfirmed submission must be reconciled before another paid request. Review the downloaded film before promoting it to public media.
 
+For Seedance requests with video input, include both input and output duration in the token estimate: `(input seconds + output seconds) × output width × output height × 24 / 1024`, multiplied by the model's current video-input token rate. Confirm the reported usage after generation. Model-specific editing requirements can differ from ordinary generation parameters even when a request passes OpenRouter's catalog validation.
+
 ## Enquiry forms
 
 Forms validate required fields and open an addressed email draft by default. They do not claim that a message has been sent. An optional `NEXT_PUBLIC_FORM_ENDPOINT` HTTPS endpoint can accept JSON submissions. The variable must be supplied at build time; no secrets belong in public environment variables.

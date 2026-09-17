@@ -32,7 +32,9 @@ async function request(url, init = {}) {
   });
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));
-    throw new Error(`OpenRouter HTTP ${response.status}: ${body.error?.message ?? body.error ?? response.statusText}`);
+    const error = new Error(`OpenRouter HTTP ${response.status}: ${body.error?.message ?? body.error ?? response.statusText}`);
+    error.httpStatus = response.status;
+    throw error;
   }
   return response;
 }
@@ -45,6 +47,9 @@ function save(path, data, exclusive = false) {
 export function validate(body, model) {
   if (!model || body.model !== model.id) throw new Error('Model is not in the current video catalog.');
   if (!body.prompt?.trim()) throw new Error('A prompt is required.');
+  if (body.model === 'black-forest-labs/flux-video-edit' && ['duration', 'resolution', 'aspect_ratio', 'size', 'generate_audio'].some(field => body[field] !== undefined)) {
+    throw new Error('FLUX Video Edit inherits source timing, geometry and audio; omit generation overrides.');
+  }
   for (const [field, list] of [['duration', 'supported_durations'], ['resolution', 'supported_resolutions'], ['aspect_ratio', 'supported_aspect_ratios']]) {
     if (body[field] !== undefined && model[list]?.length && !model[list].includes(body[field])) {
       throw new Error(`Unsupported ${field}: ${body[field]}`);
@@ -91,7 +96,8 @@ async function main() {
       save(extra, { ...record, ...job });
       console.log(JSON.stringify(summary(job)));
     } catch (error) {
-      save(extra, { ...record, status: 'submission_unconfirmed', error: error.message });
+      const rejected = error.httpStatus >= 400 && error.httpStatus < 500;
+      save(extra, { ...record, status: rejected ? 'rejected' : 'submission_unconfirmed', error: error.message });
       throw error;
     }
     return;
