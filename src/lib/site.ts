@@ -1,4 +1,6 @@
-const productionUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://swankey-boats.yangdengkui01.workers.dev";
+import settings from "../../site.config.json";
+
+const productionUrl = process.env.NEXT_PUBLIC_SITE_URL || settings.origin;
 
 export const site = {
   name: "Swankey",

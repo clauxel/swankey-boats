@@ -32,8 +32,14 @@ if (target.settings.bindings?.some(binding => binding.type !== 'assets')) throw 
 const deployments = await api(`/accounts/${target.accountId}/workers/scripts/${project}/deployments`);
 mkdirSync('.release', { recursive: true });
 writeFileSync('.release/previous-deployment.json', JSON.stringify({ project, capturedAt: new Date().toISOString(), deployments: deployments.deployments?.map(({ id, versions }) => ({ id, versions })) }, null, 2));
+execFileSync('npm', ['run', 'domain:test'], { stdio: 'inherit' });
 execFileSync('npm', ['run', 'lint'], { stdio: 'inherit' });
 execFileSync('npm', ['run', 'build'], { stdio: 'inherit' });
 const env = { ...process.env, CLOUDFLARE_API_KEY: apiKey, CLOUDFLARE_EMAIL: email, CLOUDFLARE_ACCOUNT_ID: target.accountId, WRANGLER_SEND_METRICS: 'false' };
 delete env.CLOUDFLARE_API_TOKEN;
 execFileSync('node', ['node_modules/wrangler/bin/wrangler.js', 'deploy', '--config', 'wrangler.worker.jsonc', '--keep-vars', ...(dryRun ? ['--dry-run'] : [])], { stdio: 'inherit', env });
+
+if (!dryRun) {
+  execFileSync('npm', ['run', 'verify:live'], { stdio: 'inherit' });
+  execFileSync('npm', ['run', 'indexnow'], { stdio: 'inherit' });
+}

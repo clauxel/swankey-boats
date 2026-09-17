@@ -1,9 +1,18 @@
+import settings from "../site.config.json" with { type: "json" };
+
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
 }
 
 const worker = {
   async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    const canonical = new URL(settings.origin);
+    if (url.hostname === settings.wwwHost || (url.hostname === canonical.hostname && url.protocol !== canonical.protocol)) {
+      url.protocol = canonical.protocol;
+      url.host = canonical.host;
+      return Response.redirect(url.href, 308);
+    }
     const range = request.headers.get("range");
     const headers = new Headers(request.headers);
     headers.delete("range");

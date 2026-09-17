@@ -2,7 +2,7 @@
 
 Swankey's boat catalogue and dealer enquiry website, built with Next.js, TypeScript and Tailwind CSS.
 
-Live site: [Swankey Boats](https://swankey-boats.yangdengkui01.workers.dev/).
+Live site: [Swankey Boats](https://swankey.boats/).
 
 ## Development
 
@@ -61,6 +61,8 @@ npm run deploy -- --dry-run
 npm run deploy
 ```
 
-The release script checks the existing Worker and its bindings, saves previous deployment IDs locally, runs lint and a production build, then deploys while preserving variables. It accepts `CLOUDFLARE_API_KEY`, `CLOUDFLARE_EMAIL` and optional `CLOUDFLARE_ACCOUNT_ID` from the environment; on macOS it can read the corresponding existing Keychain entries. It never writes credentials to disk.
+The release script checks the existing Worker and its bindings, saves previous deployment IDs locally, runs domain tests, lint and a production build, then deploys while preserving variables. It verifies the live site after deployment and submits the current sitemap to IndexNow. It accepts `CLOUDFLARE_API_KEY`, `CLOUDFLARE_EMAIL` and optional `CLOUDFLARE_ACCOUNT_ID` from the environment; on macOS it can read the corresponding existing Keychain entries. It never writes credentials to disk.
 
-Per-page metadata, structured data, robots and sitemap remain available. The canonical URL defaults to the live Workers URL; `NEXT_PUBLIC_SITE_URL` can set an attached custom domain at build time.
+Per-page metadata, structured data, robots and sitemap remain available. The canonical URL comes from `site.config.json` and defaults to `https://swankey.boats`; `NEXT_PUBLIC_SITE_URL` can override it for isolated builds. The `www` hostname redirects to the canonical domain, preserving paths and query strings.
+
+The IndexNow verification value in `site.config.json` and its matching public text file are intentionally public ownership proofs, not secret API credentials.

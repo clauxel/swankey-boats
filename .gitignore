@@ -52,3 +52,6 @@ next-env.d.ts
 docs/reference/
 docs/design-qa.md
 design-qa.md
+
+# Private task and infrastructure records
+.rankup/

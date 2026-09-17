@@ -1,8 +1,9 @@
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, readFile } from 'node:fs/promises';
+const settings = JSON.parse(await readFile(new URL('../site.config.json', import.meta.url), 'utf8'));
 const run = promisify(execFile);
-const base = process.argv[2] || 'https://swankey-boats.yangdengkui01.workers.dev';
+const base = process.argv[2] || settings.origin;
 const paths = ['/', '/product', '/technology', '/gallery', '/dealers', '/about', '/contact', '/robots.txt', '/sitemap.xml', '/manifest.webmanifest', '/brand/swankey-logo.png', '/brand/swankey-icon.png', '/opengraph-image', '/apple-icon', '/not-a-real-page'];
 const results = await Promise.all(paths.map(async path => {
  const { stdout } = await run('curl', ['-sS', '-L', '--max-time', '30', '-o', '/dev/null', '-w', '%{http_code} %{content_type}', base + path], { maxBuffer: 1024 * 1024 });
