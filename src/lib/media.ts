@@ -22,7 +22,7 @@ export const photos = {
     src: "/media/feature-bow.jpg",
     width: 1152,
     height: 864,
-    alt: "Forward casting deck of HQ E498 with a fold-down fishing seat, non-slip surface and cyan hull pinstripe.",
+    alt: "Forward bow and trolling area of HQ E498, with a standing angler on the casting deck and a thin cyan hull pinstripe.",
   },
   console: {
     src: "/media/feature-console.jpg",
@@ -53,8 +53,8 @@ export const photos = {
 export const craftsmanship = [
   {
     photo: photos.bow,
-    title: "Forward casting deck",
-    body: "A wide, uncluttered bow for standing casts. The standard layout keeps the forward deck clean by reducing dependence on an external trolling motor.",
+    title: "Bow and trolling area",
+    body: "A wide, uncluttered bow for standing casts. The standard layout keeps the forward deck clean; an external bow motor remains optional redundancy.",
   },
   {
     photo: photos.storage,
@@ -68,8 +68,8 @@ export const craftsmanship = [
   },
   {
     photo: photos.stern,
-    title: "Hidden jet transom",
-    body: "No exposed propeller. A protected intake sits under the hull for grass edges, flats and skinny water.",
+    title: "Stern and hidden jet",
+    body: "No exposed propeller at the transom. A protected intake sits under the hull for grass edges, flats and skinny water.",
   },
 ] as const;
 
@@ -85,7 +85,7 @@ export const galleryPhotos = [
   {
     id: "bow",
     kind: "Detail",
-    title: "Bow and forward deck",
+    title: "Bow and trolling area",
     photo: photos.bow,
     caption: "Clean bow deck for standing casts. Optional bow motor remains redundancy, not the standard layout.",
   },

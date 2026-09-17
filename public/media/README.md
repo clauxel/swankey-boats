@@ -1,16 +1,17 @@
 Place HQ E498 photography, renders and video here.
 
-Current site assets (wired in `src/lib/media.ts`):
+Primary visual assets (wired in `src/lib/media.ts`):
 
 | File | Use |
 | --- | --- |
-| `hero-lake.jpg` | Home hero, inner-page banners, dealer CTA band, gallery lifestyle |
-| `cutaway-exploded.jpg` | Technology cutaway, Home engineering plate, gallery technical |
-| `feature-bow.jpg` | Craftsmanship grid, product page, gallery |
-| `feature-console.jpg` | Product / about detail |
-| `feature-storage.jpg` | Craftsmanship grid, gallery |
-| `feature-stern.jpg` | Craftsmanship grid, technology hero, gallery jet intake |
-| `feature-stripe.jpg` | Craftsmanship grid, dealers, gallery hull detail |
+| `hero-lake.jpg` | Full-bleed Home hero (and Product / Dealers banners). Lifestyle: graphite aluminum bass boat on a calm lake at golden hour, two anglers, cyan hull pinstripe. |
+| `detail-collage.jpg` | Source exploded engineering still (same bytes as `cutaway-exploded.jpg`). |
+| `cutaway-exploded.jpg` | Technology / Home engineering plate: deck, batteries + HV cables, electric jet. |
+| `feature-bow.jpg` | Craftsmanship — bow and trolling area (crop of the lake hero) |
+| `feature-storage.jpg` | Craftsmanship — storage hatch |
+| `feature-stripe.jpg` | Craftsmanship — hull cyan pinstripe (crop of the lake hero) |
+| `feature-stern.jpg` | Craftsmanship — stern / transom (crop of the lake hero) |
+| `feature-console.jpg` | Product / about — low console (crop of the lake hero) |
 
 Suggested extra filenames if sample-boat footage arrives:
 

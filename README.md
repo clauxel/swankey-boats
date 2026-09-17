@@ -56,12 +56,13 @@ Public files live in `public/media/` and are catalogued in `src/lib/media.ts`.
 | File | Role |
 | --- | --- |
 | `hero-lake.jpg` | Primary Home hero (full-bleed lake lifestyle) and inner-page banners |
-| `cutaway-exploded.jpg` | Technology / engineering exploded view (deck, batteries, HV cables, jet) |
-| `feature-bow.jpg` | Forward casting deck |
-| `feature-console.jpg` | Low console |
+| `detail-collage.jpg` | Exploded engineering still (deck / batteries / jet); same image as `cutaway-exploded.jpg` |
+| `cutaway-exploded.jpg` | Technology / engineering exploded view |
+| `feature-bow.jpg` | Bow and trolling area (crop of the lake hero) |
+| `feature-console.jpg` | Low console (crop of the lake hero) |
 | `feature-storage.jpg` | In-deck storage hatch |
-| `feature-stern.jpg` | Hidden jet transom |
-| `feature-stripe.jpg` | Graphite hull cyan pinstripe |
+| `feature-stern.jpg` | Stern / transom (crop of the lake hero) |
+| `feature-stripe.jpg` | Graphite hull cyan pinstripe (crop of the lake hero) |
 
 Images are compressed JPEGs served as static files (`next/image` with `images.unoptimized` for Cloudflare Pages export). Swap files in place to update photography without changing layout.
 
