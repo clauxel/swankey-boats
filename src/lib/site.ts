@@ -25,6 +25,7 @@ export const nav = [
   { href: "/gallery", label: "Gallery" },
   { href: "/dealers", label: "Dealers" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const routes = {

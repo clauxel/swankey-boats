@@ -70,12 +70,12 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="surface rounded-3xl p-6 sm:p-8">
+    <form onSubmit={onSubmit} noValidate className="border border-white/10 bg-bg-elevated p-6 sm:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm">
           <span>Name *</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.name}
             onChange={(event) => update("name", event.target.value)}
             autoComplete="name"
@@ -86,7 +86,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
         <label className="grid gap-2 text-sm">
           <span>Company</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.company}
             onChange={(event) => update("company", event.target.value)}
             autoComplete="organization"
@@ -96,7 +96,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
           <span>Email *</span>
           <input
             type="email"
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.email}
             onChange={(event) => update("email", event.target.value)}
             autoComplete="email"
@@ -107,7 +107,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
         <label className="grid gap-2 text-sm">
           <span>Phone / WhatsApp</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.phone}
             onChange={(event) => update("phone", event.target.value)}
             autoComplete="tel"
@@ -116,7 +116,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
         <label className="grid gap-2 text-sm">
           <span>Country / region</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.country}
             onChange={(event) => update("country", event.target.value)}
           />
@@ -124,7 +124,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
         <label className="grid gap-2 text-sm">
           <span>Topic</span>
           <select
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={payload.topic}
             onChange={(event) => update("topic", event.target.value)}
           >
@@ -139,7 +139,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
       <label className="mt-5 grid gap-2 text-sm">
         <span>Message *</span>
         <textarea
-          className="min-h-32 rounded-xl border border-white/12 bg-black/25 px-3 py-3 text-ice"
+          className="field"
           value={data.message}
           onChange={(event) => update("message", event.target.value)}
           required

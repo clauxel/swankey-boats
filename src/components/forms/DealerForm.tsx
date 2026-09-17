@@ -78,12 +78,12 @@ export function DealerForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="surface rounded-3xl p-6 sm:p-8">
+    <form onSubmit={onSubmit} noValidate className="border border-white/10 bg-bg-elevated p-6 sm:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm">
           <span>Company name *</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.companyName}
             onChange={(event) => update("companyName", event.target.value)}
             autoComplete="organization"
@@ -94,7 +94,7 @@ export function DealerForm() {
         <label className="grid gap-2 text-sm">
           <span>Contact person *</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.contactPerson}
             onChange={(event) => update("contactPerson", event.target.value)}
             autoComplete="name"
@@ -105,7 +105,7 @@ export function DealerForm() {
         <label className="grid gap-2 text-sm">
           <span>Country / region *</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.country}
             onChange={(event) => update("country", event.target.value)}
             list="dealer-countries"
@@ -129,7 +129,7 @@ export function DealerForm() {
           <span>Email *</span>
           <input
             type="email"
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.email}
             onChange={(event) => update("email", event.target.value)}
             autoComplete="email"
@@ -140,7 +140,7 @@ export function DealerForm() {
         <label className="grid gap-2 text-sm sm:col-span-2">
           <span>Phone / WhatsApp *</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.phone}
             onChange={(event) => update("phone", event.target.value)}
             autoComplete="tel"
@@ -151,7 +151,7 @@ export function DealerForm() {
         <label className="grid gap-2 text-sm">
           <span>Company website</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.website}
             onChange={(event) => update("website", event.target.value)}
             placeholder="https://"
@@ -160,7 +160,7 @@ export function DealerForm() {
         <label className="grid gap-2 text-sm">
           <span>Current brands</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.currentBrands}
             onChange={(event) => update("currentBrands", event.target.value)}
           />
@@ -205,7 +205,7 @@ export function DealerForm() {
         <label className="grid gap-2 text-sm">
           <span>Annual boat sales</span>
           <select
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.annualSales}
             onChange={(event) => update("annualSales", event.target.value)}
           >
@@ -220,7 +220,7 @@ export function DealerForm() {
         <label className="grid gap-2 text-sm">
           <span>Interested model *</span>
           <input
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.interestedModel}
             onChange={(event) => update("interestedModel", event.target.value)}
           />
@@ -229,7 +229,7 @@ export function DealerForm() {
         <label className="grid gap-2 text-sm sm:col-span-2">
           <span>Expected order quantity *</span>
           <select
-            className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
+            className="field"
             value={data.expectedQuantity}
             onChange={(event) => update("expectedQuantity", event.target.value)}
             required
@@ -257,7 +257,7 @@ export function DealerForm() {
       <label className="mt-6 grid gap-2 text-sm">
         <span>Notes</span>
         <textarea
-          className="min-h-28 rounded-xl border border-white/12 bg-black/25 px-3 py-3 text-ice"
+          className="field"
           value={data.notes}
           onChange={(event) => update("notes", event.target.value)}
         />
