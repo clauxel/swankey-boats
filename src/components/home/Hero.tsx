@@ -35,7 +35,7 @@ export function HomeHero() {
 
   return (
     <section className="home-hero" aria-label="Swankey on the water">
-      <video ref={video} className="hero-video" src="/media/swankey-water-film.mp4?v=4" poster="/media/film-poster.jpg" autoPlay muted={muted} loop playsInline preload="metadata" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="Boating film across inland lakes" />
+      <video ref={video} className="hero-video" src="/media/swankey-water-film.mp4?v=5" poster="/media/film-poster.jpg" autoPlay muted={muted} loop playsInline preload="metadata" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="Boating film across inland lakes" />
       <div className="hero-shade" />
       <div className="hero-copy">
         <p className="overline">SWANKEY · ELECTRIC JET BASS BOATS</p>
@@ -45,7 +45,7 @@ export function HomeHero() {
       </div>
       <div className="hero-bottom"><a href="#discover" className="scroll-cue">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><div className="video-controls"><button onClick={() => { const v = video.current; if (v) {if (v.paused) void v.play().catch(() => {}); else v.pause();} }} aria-label={playing ? "Pause background video" : "Play background video"}>{playing ? "Pause" : "Play"}</button><span aria-hidden="true">/</span><button onClick={() => setMuted(!muted)} aria-label={muted ? "Enable video sound" : "Mute video sound"}>{muted ? "Sound off" : "Sound on"}</button></div></div>
       <dialog ref={dialog} className="film-dialog" aria-label="On the water film" onCancel={(event) => { event.preventDefault(); closeFilm(); }} onClick={(event) => {if(event.target === event.currentTarget) closeFilm();}}>
-        <div className="film-shell"><button className="film-close" onClick={closeFilm}>Close film ×</button><video ref={film} src="/media/swankey-water-film.mp4?v=4" poster="/media/film-poster.jpg" controls playsInline preload="none" aria-label="On the water — boating film" /></div>
+        <div className="film-shell"><button className="film-close" onClick={closeFilm}>Close film ×</button><video ref={film} src="/media/swankey-water-film.mp4?v=5" poster="/media/film-poster.jpg" controls playsInline preload="none" aria-label="On the water — boating film" /></div>
       </dialog>
     </section>
   );

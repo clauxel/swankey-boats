@@ -3,6 +3,7 @@ import { MediaSlot } from "@/components/ui/MediaSlot";
 import { Eyebrow, PageHero, Section } from "@/components/ui/Section";
 import { JetCutaway, ServicePath, StationKeepingDiagram } from "@/components/visual/Diagrams";
 import { technologyBlocks } from "@/lib/content";
+import { SystemExplainer } from "@/components/visual/SystemExplainer";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata("technology", "/technology");
@@ -12,17 +13,19 @@ export default function TechnologyPage() {
     <main id="main">
       <PageHero
         eyebrow="Technology"
-        title="Integrated electric jet. Protected intake. Station keeping for fishing."
-        lead="Hull, pump, battery, BMS, control and fishing layout are specified together so dealers are not assembling a propulsion stack on the water."
+        title="Inside the electric jet system."
+        lead="See how the fishing deck, hull, battery, controls and propulsion system come together in one integrated boat."
         actions={
           <>
-            <ButtonLink href="/contact?topic=engineering">Talk to Engineering</ButtonLink>
+            <ButtonLink href="#system-explained">Explore the system</ButtonLink>
             <ButtonLink href="/product" variant="secondary">
               E498 specifications
             </ButtonLink>
           </>
         }
       />
+
+      <SystemExplainer />
 
       <Section className="pt-0">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
