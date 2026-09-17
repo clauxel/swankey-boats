@@ -10,7 +10,9 @@
     "preview": "wrangler dev --config wrangler.worker.jsonc",
     "deploy": "node scripts/deploy.mjs",
     "start": "npm run preview",
-    "lint": "eslint"
+    "lint": "eslint",
+    "video": "node scripts/openrouter-video.mjs",
+    "video:test": "node --test scripts/openrouter-video.test.mjs"
   },
   "dependencies": {
     "next": "16.3.5",

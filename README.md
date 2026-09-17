@@ -32,6 +32,20 @@ The visual identity combines navy backgrounds, marine blue accents and an origin
 
 Logo files are in `public/brand/`. Film, stills and the E498 design illustration are in `public/media/`; see `docs/media.md` for asset provenance. The E498 illustration is a design rendering; final configuration is confirmed in the build sheet. Product diagrams remain schematic.
 
+### OpenRouter video production
+
+The local media-production CLI uses OpenRouter's asynchronous video API. It reads `OPENROUTER_API_KEY` from the environment or the configured macOS Keychain entry; the marketing site never receives the key. Generation is a paid operation, separate from deployment.
+
+```sh
+npm run video -- models .release/video-models.json
+npm run video -- submit .release/request.json .release/job.json
+npm run video -- status .release/job.json
+npm run video -- download .release/job.json .release/generated.mp4
+npm run video:test
+```
+
+Build the request using the [OpenRouter video API](https://openrouter.ai/docs/guides/overview/multimodal/video-generation) and the current model catalog. Video edits use `input_references` with `video_url` and `image_url` entries. Do not combine these with `frame_images`, which would override the references. Job records prevent accidental repeat submissions; resume an existing job with `status`. An unconfirmed submission must be reconciled before another paid request. Review the downloaded film before promoting it to public media.
+
 ## Enquiry forms
 
 Forms validate required fields and open an addressed email draft by default. They do not claim that a message has been sent. An optional `NEXT_PUBLIC_FORM_ENDPOINT` HTTPS endpoint can accept JSON submissions. The variable must be supplied at build time; no secrets belong in public environment variables.
