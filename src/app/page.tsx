@@ -5,7 +5,7 @@ import { FeatureSlider, ProductCarousel } from "@/components/home/Showcase";
 import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata("home", "/");
 const stories = [
-  {tag:"THE BOAT", title:"A clear deck. A clear purpose.", text:"Meet the E498 electric jet bass boat.", image:"/media/e498-design.png", href:"/product"},
+  {tag:"THE BOAT", title:"A clear deck. A clear purpose.", text:"Meet the E498 electric jet bass boat.", image:"/media/e498-equipped.png", href:"/product"},
   {tag:"TECHNOLOGY", title:"See beneath the surface.", text:"Explore the full system, layer by layer.", image:"/media/swankey-electric-jet-exploded.jpg", href:"/technology#system-explained"},
   {tag:"PARTNERSHIPS", title:"Bring Swankey to your waters.", text:"Our European dealer programme.", image:"/media/fishing.jpg", href:"/dealers"},
   {tag:"OUR STORY", title:"A different kind of boat company.", text:"Electric thinking. Built in Shenzhen.", image:"/media/horizon.jpg", href:"/about"},

@@ -3,7 +3,10 @@ import AVFoundation
 import CoreVideo
 
 let asset = AVURLAsset(url: URL(fileURLWithPath: CommandLine.arguments[1]))
-let duration = asset.duration
+// An explicit edit duration avoids extra tail padding in retimed export tracks.
+let duration = CommandLine.arguments.count > 3
+    ? CMTime(seconds: Double(CommandLine.arguments[3])!, preferredTimescale: 600)
+    : asset.duration
 let reader = try AVAssetReader(asset: asset)
 reader.timeRange = CMTimeRange(start: .zero, duration: duration)
 let writer = try AVAssetWriter(outputURL: URL(fileURLWithPath: CommandLine.arguments[2]), fileType: .mp4)

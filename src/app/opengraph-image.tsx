@@ -6,7 +6,7 @@ export const alt = "Swankey — Go shallow. Fish further.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export default async function OpenGraphImage() {
-  const [logo, boat] = await Promise.all(["brand/swankey-logo.png", "media/e498-design.png"].map(file => readFile(join(process.cwd(), "public", file))));
+  const [logo, boat] = await Promise.all(["brand/swankey-logo.png", "media/e498-equipped.png"].map(file => readFile(join(process.cwd(), "public", file))));
   return new ImageResponse(<div style={{display:"flex",position:"relative",width:"100%",height:"100%",background:"#091827",padding:60,color:"white",flexDirection:"column"}}>
     <img alt="Swankey" src={`data:image/png;base64,${logo.toString("base64")}`} width={280} height={93}/>
     <div style={{display:"flex",fontSize:76,fontWeight:700,letterSpacing:-3,lineHeight:1.05,marginTop:45,flexDirection:"column"}}><span>Go shallow.</span><span style={{color:"#6cbcf2"}}>Fish further.</span></div>

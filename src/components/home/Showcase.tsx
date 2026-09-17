@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const cards = [
-  { title: "E498", caption: "Electric jet bass boat", image: "/media/e498-design.png", href: "/product", product: true },
+  { title: "E498", caption: "Electric jet bass boat", image: "/media/e498-equipped.png", href: "/product", product: true },
   { title: "Electric. Integrated.", caption: "Explore the technology", image: "/media/lake-run.jpg", href: "/technology" },
   { title: "Life on the water", caption: "Find your next horizon", image: "/media/film-poster.jpg", href: "/gallery" },
   { title: "Become a dealer", caption: "Build something together", image: "/media/fishing.jpg", href: "/dealers" },
@@ -25,7 +25,7 @@ export function ProductCarousel() {
   return <section className="catalogue" id="discover" aria-label="Discover Swankey">
     <div className="catalogue-heading"><p className="overline">MADE FOR THE WATER</p><h2>Find your Swankey.</h2></div>
     <div className="catalogue-wrap"><button className="carousel-arrow prev" onClick={() => move(-1)} aria-label="Previous products">←</button>
-      <div className="catalogue-track" ref={track}>{cards.map(card => <article className="catalogue-card" key={card.title}><Link href={card.href}><div className="catalogue-title"><h3>{card.title}</h3><p>{card.caption}</p></div><div className={`catalogue-image ${card.product ? "boat-image" : ""}`}><Image src={card.image} width={600} height={400} alt={card.product ? "Swankey E498 design rendering" : card.title} /></div><span className="card-cta">Discover more <span aria-hidden="true">↗</span></span></Link></article>)}</div>
+      <div className="catalogue-track" ref={track}>{cards.map(card => <article className="catalogue-card" key={card.title}><Link href={card.href}><div className="catalogue-title"><h3>{card.title}</h3><p>{card.caption}</p></div><div className={`catalogue-image ${card.product ? "boat-image" : ""}`}><Image src={card.image} width={600} height={400} alt={card.product ? "Swankey E498 equipped design with fishing gear and compact sun canopy" : card.title} /></div><span className="card-cta">Discover more <span aria-hidden="true">↗</span></span></Link></article>)}</div>
       <button className="carousel-arrow next" onClick={() => move(1)} aria-label="Next products">→</button></div>
   </section>;
 }
@@ -49,7 +49,7 @@ export function FeatureSlider() {
     <div className="feature-backgrounds">{slides.map((s, i) => <Image key={s.title} src={s.image} fill sizes="100vw" alt="" className={i === active ? "active" : ""} />)}</div>
     <div className="feature-blue-panel" />
     <div className="feature-content" key={active} aria-live={paused || interacting ? "polite" : "off"}><div className="feature-heading"><h2>{slide.title}</h2><p>{slide.sub}</p></div>
-      <div className="feature-stage"><div className="feature-stat"><p>{slide.left}<small>{slide.unit}</small></p><span>{slide.leftLabel}</span></div><Image className="feature-boat" src="/media/e498-design.png" width={1536} height={1024} alt="Swankey E498 design rendering" /><div className="feature-stat"><p>{slide.right}</p><span>{slide.rightLabel}</span></div></div>
+      <div className="feature-stage"><div className="feature-stat"><p>{slide.left}<small>{slide.unit}</small></p><span>{slide.leftLabel}</span></div><Image className="feature-boat" src="/media/e498-equipped.png" width={1536} height={1024} alt="Swankey E498 equipped design with fishing gear and compact sun canopy" /><div className="feature-stat"><p>{slide.right}</p><span>{slide.rightLabel}</span></div></div>
       <Link className="action outline" href={slide.link}>{slide.cta} <span aria-hidden="true">↗</span></Link>
     </div>
     <button className="carousel-arrow prev" onClick={() => move(-1)} aria-label="Previous highlight">←</button><button className="carousel-arrow next" onClick={() => move(1)} aria-label="Next highlight">→</button>

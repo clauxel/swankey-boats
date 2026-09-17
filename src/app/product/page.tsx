@@ -35,7 +35,7 @@ export default function ProductPage() {
       />
 
       <Section className="pt-0">
-        <figure><div className="product-render"><Image src="/media/e498-design.png" width={1536} height={1024} alt="Swankey E498 design rendering" priority /></div><figcaption className="media-caption">E498 design — configuration and details are confirmed in your build sheet.</figcaption></figure>
+        <figure><div className="product-render"><Image src="/media/e498-equipped.png" width={1536} height={1024} alt="Swankey E498 equipped design with fishing gear and compact sun canopy" priority /></div><figcaption className="media-caption">E498 equipped design — fishing electronics, seating and a compact sun canopy shown. Final equipment is confirmed in your build sheet.</figcaption></figure>
         <div className="system-product-link"><div><Eyebrow>Under the deck</Eyebrow><h2>See how it all fits together.</h2><p>Explore the complete exploded view, with eight component explanations and a guide to electric jet propulsion.</p></div><ButtonLink href="/technology#system-explained">Explore the engineering <span aria-hidden="true">↗</span></ButtonLink></div>
       </Section>
 

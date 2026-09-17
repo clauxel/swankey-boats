@@ -1,16 +1,18 @@
 import Foundation
 import AVFoundation
 
-// Lead with open water; hold each of the two closing boat shots for three seconds.
+// Each source range stays inside one actual camera shot, held for three seconds.
+// Omit the former closing water-level close-up (source 16.2–18.5 seconds).
 // Exclude original brand titles and hull branding.
 let asset = AVURLAsset(url: URL(fileURLWithPath: CommandLine.arguments[1]))
 let composition = AVMutableComposition()
 var cursor = CMTime.zero
 let shots: [(start: Double, end: Double, duration: Double)] = [
-    (6.8, 9.75, 2.95),
-    (14.1, 14.7, 0.6),
+    (6.0, 6.8, 3.0),
+    (7.0, 9.0, 3.0),
+    (9.25, 10.55, 3.0),
+    (14.1, 14.7, 3.0),
     (14.8, 16.05, 3.0),
-    (16.2, 18.5, 3.0),
 ]
 for shot in shots {
     let start = CMTime(seconds: shot.start, preferredTimescale: 600)
