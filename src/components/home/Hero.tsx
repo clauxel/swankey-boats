@@ -7,8 +7,8 @@ export function HomeHero() {
   return (
     <section className="relative isolate h-[calc(100svh-2.75rem)] overflow-hidden md:h-svh">
       <LakeScene note={heroCopy.sceneNote} />
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-5 pb-10 sm:px-8 md:justify-center md:pb-0">
-        <div className="max-w-2xl pt-24">
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-5 pb-8 sm:px-8 md:justify-center md:pb-0">
+        <div className="max-w-2xl pt-20 sm:pt-24">
           <p className="font-mono text-[11px] tracking-[0.22em] text-cyan-bright uppercase">
             {site.name} · {site.productModel}
           </p>

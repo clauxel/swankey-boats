@@ -40,8 +40,8 @@ export default function ProductPage() {
           caption="White-background or waterside 45° view. Keep length/beam proportions consistent with the working model."
           ratio="hero"
         >
-          <div className="absolute inset-0 flex items-end p-8">
-            <BassBoat className="w-full" />
+          <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-10">
+            <BassBoat className="max-h-full w-full" />
           </div>
         </MediaSlot>
       </Section>

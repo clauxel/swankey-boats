@@ -83,8 +83,8 @@ export default function HomePage() {
             caption="Replace with white-background 45° render or sample-boat photograph."
             ratio="hero"
           >
-            <div className="absolute inset-0 flex items-end p-6">
-              <BassBoat className="w-full" />
+            <div className="absolute inset-0 flex items-center justify-center p-6">
+              <BassBoat className="max-h-full w-full" />
             </div>
           </MediaSlot>
         </div>
