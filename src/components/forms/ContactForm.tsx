@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useMemo, useState, useSyncExternalStore } from "react";
 import {
   contactMailto,
   type ContactPayload,
@@ -17,30 +17,31 @@ function FieldError({ message }: { message?: string }) {
   return <p className="mt-1 text-sm text-red-300">{message}</p>;
 }
 
+function readTopicParam(fallback: string) {
+  const topic = new URLSearchParams(window.location.search).get("topic");
+  return inquiryTopics.find((item) => item.value === topic)?.value ?? fallback;
+}
+
 export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: string }) {
-  const [data, setData] = useState<ContactPayload>({
+  const urlTopic = useSyncExternalStore(
+    () => () => {},
+    () => readTopicParam(defaultTopic),
+    () => defaultTopic,
+  );
+  const [data, setData] = useState({
     name: "",
     company: "",
     email: "",
     phone: "",
     country: "",
-    topic: defaultTopic,
     message: "",
+    topic: undefined as string | undefined,
   });
+  const payload: ContactPayload = { ...data, topic: data.topic ?? urlTopic };
   const [errors, setErrors] = useState<Partial<Record<keyof ContactPayload, string>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [method, setMethod] = useState<"mailto" | "endpoint" | null>(null);
   const endpointConfigured = useMemo(() => Boolean(formEndpoint()), []);
-
-  useEffect(() => {
-    const topic = new URLSearchParams(window.location.search).get("topic");
-    const resolved = inquiryTopics.find((item) => item.value === topic)?.value;
-    if (resolved) {
-      setData((current) =>
-        current.topic === resolved ? current : { ...current, topic: resolved },
-      );
-    }
-  }, []);
 
   function update<K extends keyof ContactPayload>(key: K, value: ContactPayload[K]) {
     setData((current) => ({ ...current, [key]: value }));
@@ -48,21 +49,21 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const nextErrors = validateContact(data);
+    const nextErrors = validateContact(payload);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
     setStatus("sending");
     try {
-      const result = await postForm({ type: "contact", ...data });
+      const result = await postForm({ type: "contact", ...payload });
       if (result.method === "mailto") {
-        window.location.href = contactMailto(data);
+        window.location.href = contactMailto(payload);
         setMethod("mailto");
       } else {
         setMethod("endpoint");
       }
       setStatus("sent");
     } catch {
-      window.location.href = contactMailto(data);
+      window.location.href = contactMailto(payload);
       setMethod("mailto");
       setStatus("error");
     }
@@ -124,7 +125,7 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
           <span>Topic</span>
           <select
             className="min-h-12 rounded-xl border border-white/12 bg-black/25 px-3 text-ice"
-            value={data.topic}
+            value={payload.topic}
             onChange={(event) => update("topic", event.target.value)}
           >
             {inquiryTopics.map((topic) => (
