@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import {
   contactMailto,
   type ContactPayload,
@@ -31,6 +31,16 @@ export function ContactForm({ defaultTopic = "product" }: { defaultTopic?: strin
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [method, setMethod] = useState<"mailto" | "endpoint" | null>(null);
   const endpointConfigured = useMemo(() => Boolean(formEndpoint()), []);
+
+  useEffect(() => {
+    const topic = new URLSearchParams(window.location.search).get("topic");
+    const resolved = inquiryTopics.find((item) => item.value === topic)?.value;
+    if (resolved) {
+      setData((current) =>
+        current.topic === resolved ? current : { ...current, topic: resolved },
+      );
+    }
+  }, []);
 
   function update<K extends keyof ContactPayload>(key: K, value: ContactPayload[K]) {
     setData((current) => ({ ...current, [key]: value }));
