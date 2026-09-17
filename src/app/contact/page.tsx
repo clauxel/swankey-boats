@@ -1,21 +1,12 @@
 import { ContactForm } from "@/components/forms/ContactForm";
 import { ButtonLink } from "@/components/ui/Button";
 import { PageHero, Section } from "@/components/ui/Section";
-import { inquiryTopics } from "@/lib/forms";
 import { buildMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
 export const metadata = buildMetadata("contact", "/contact");
 
-export default async function ContactPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ topic?: string }>;
-}) {
-  const params = await searchParams;
-  const topic =
-    inquiryTopics.find((item) => item.value === params.topic)?.value ?? "product";
-
+export default function ContactPage() {
   return (
     <main id="main">
       <PageHero
@@ -32,7 +23,7 @@ export default async function ContactPage({
         }
       />
       <Section className="pt-0">
-        <ContactForm defaultTopic={topic} />
+        <ContactForm />
       </Section>
     </main>
   );

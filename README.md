@@ -10,15 +10,17 @@ Copy, specifications, dealer flow and visual direction follow the HUANQI website
 
 - Next.js (App Router) + TypeScript
 - Tailwind CSS v4
-- Deploy target: Vercel
+- Static export (`output: "export"`) → Cloudflare Pages
 
 ## Scripts
 
 ```bash
 npm install
-npm run dev      # local server
-npm run build    # production build (must succeed)
-npm run start    # serve the production build
+npm run dev          # local Next.js server
+npm run build        # static export to out/ (Cloudflare-compatible)
+npm run pages:build  # alias for npm run build
+npm run preview      # serve out/ with Wrangler Pages
+npm run deploy       # build, then wrangler pages deploy
 npm run lint
 ```
 
@@ -54,22 +56,22 @@ To replace a slot:
    - `public/media/hero-dawn.jpg`
    - `public/media/three-quarter.jpg`
    - `public/media/video-run.mp4`
-3. Swap the SVG child inside the matching `MediaSlot` on Home, Product, Technology or Gallery for a Next.js `<Image>` or `<video>`. Keep the “Media slot” label until the asset is final.
+3. Swap the SVG child inside the matching `MediaSlot` on Home, Product, Technology or Gallery for a Next.js `<Image>` or `<video>`. Keep the “Media slot” label until the asset is final. Next.js image optimisation is disabled (`images.unoptimized`) because this site is a static export.
 4. When a packaged media kit exists, point the Gallery CTA at `/media/huanqi-hq-e498-media-kit.zip` instead of the mailto request.
 
 Do not drop generic fishing-boat stock into these slots. The brief asks for model-accurate graphite hull, teal accent, wide decks, low console and hidden jet intake.
 
 ## Forms
 
-Default behaviour is **client-side validation** plus `mailto:zhongya789@gmail.com` with an encoded subject and body. No API keys are committed.
+Default behaviour is **client-side validation** plus `mailto:zhongya789@gmail.com` with an encoded subject and body. No API keys are committed. There is no Node server or Pages Function.
 
 To use [Formspree](https://formspree.io) or [Getform](https://getform.io) without changing page code:
 
 1. Create a form endpoint in that service.
-2. Copy `.env.example` to `.env.local`.
+2. Copy `.env.example` to `.env.local` for local builds, or set the variable at **build** time (static export inlines `NEXT_PUBLIC_*` values).
 3. Set `NEXT_PUBLIC_FORM_ENDPOINT` to the full HTTPS action URL (Formspree `https://formspree.io/f/xxxx` or Getform `https://getform.io/f/xxxx`).
-4. Allow JSON posts from `https://swankey.boats` (and the Vercel preview URL) in the provider settings.
-5. Redeploy. Both dealer and contact forms will POST JSON (`type: dealer-application | contact`) and fall back to mailto if the endpoint errors.
+4. Allow JSON posts from `https://swankey.boats` (and the `*.pages.dev` preview URL) in the provider settings.
+5. Rebuild and redeploy. Both dealer and contact forms will POST JSON (`type: dealer-application | contact`) and fall back to mailto if the endpoint errors.
 
 Dealer required fields from the brief: company name, contact person, country/region, email, phone/WhatsApp, sales channels, target market, interested model (defaults to HQ E498), expected quantity range.
 
@@ -83,28 +85,43 @@ Dealer required fields from the brief: company name, contact person, country/reg
 
 `metadataBase` is `https://swankey.boats`.
 
-## Deploy on Vercel + custom domain
+## Deploy on Cloudflare Pages
 
-The repo is Vercel-ready (`vercel.json`, Next.js framework, no special server).
+`npm run build` writes a fully static site to `out/` (`next.config.ts` sets `output: "export"`). Deploy that directory with Wrangler from your machine.
 
-1. Import [this GitHub repository](https://github.com/clauxel/swankey-boats) in Vercel (Framework Preset: Next.js, Root Directory: `.`, Production branch: `main`).
-2. Leave Build Command as `next build` / `npm run build`.
-3. Add `NEXT_PUBLIC_FORM_ENDPOINT` only if you are wiring Formspree/Getform.
-4. In Vercel → Project → Settings → Domains, add:
-   - `swankey.boats`
-   - `www.swankey.boats` (optional, redirect to apex)
-5. At the domain registrar, create the records Vercel shows (usually `A` for apex to `76.76.21.21` and `CNAME` for `www` to `cname.vercel-dns.com`).
-6. Wait for HTTPS. Confirm `/`, `/product`, `/dealers`, `/sitemap.xml` and `/robots.txt`.
-
-Vercel CLI (optional):
+### One-liner
 
 ```bash
-npx vercel login
-npx vercel        # preview
-npx vercel --prod # production
+npm run build && npx wrangler pages deploy out --project-name=swankey-boats
 ```
 
-This environment may not hold Vercel credentials. If CLI deploy is skipped, connecting the GitHub repo in the Vercel dashboard is the intended path.
+Equivalent helpers (same project name and output dir come from `wrangler.jsonc`):
+
+```bash
+npx wrangler login
+npm run deploy
+```
+
+First time: Wrangler will create the Pages project `swankey-boats` if it does not exist, then publish to `https://swankey-boats.pages.dev`.
+
+Optional form endpoint at build time:
+
+```bash
+NEXT_PUBLIC_FORM_ENDPOINT=https://formspree.io/f/xxxx npm run build
+npx wrangler pages deploy out --project-name=swankey-boats
+```
+
+Confirm `/`, `/product`, `/dealers`, `/contact?topic=engineering`, `/sitemap.xml` and `/robots.txt` after deploy.
+
+### Attach custom domain swankey.boats
+
+1. Open [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **swankey-boats** → **Custom domains**.
+2. Add `swankey.boats`. Optionally add `www.swankey.boats` and redirect it to the apex (Rules → Redirect Rules, or the domain’s WWW redirect).
+3. If the domain’s DNS is already on Cloudflare, the dashboard creates the record for you (apex CNAME flattening to `swankey-boats.pages.dev`).
+4. If DNS is at another registrar, add the records Cloudflare shows — typically a CNAME for `www` to `swankey-boats.pages.dev`, and CNAME flattening / ALIAS / ANAME for the apex (or move nameservers to Cloudflare).
+5. Wait for HTTPS (automatic Universal SSL). Then confirm `https://swankey.boats`.
+
+Do not point the domain at Vercel. `vercel.json` is only a static-host fallback; Cloudflare Pages is the production target.
 
 ## Visual system
 
